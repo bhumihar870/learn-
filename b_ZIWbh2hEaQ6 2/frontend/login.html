@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - LEARN_X_CODE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text">LEARN_X_CODE</span>
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
+                <h2>Welcome Back</h2>
+                <p>Sign in to continue your learning journey</p>
+            </div>
+
+            <!-- Role Selection Tabs -->
+            <div class="role-tabs">
+                <button class="role-tab active" data-role="student">
+                    Student
+                </button>
+                <button class="role-tab" data-role="teacher">
+                    Teacher
+                </button>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                Invalid email or password. Please try again.
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <input type="hidden" id="userRole" value="student">
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>Don't have an account? <a href="register.html">Sign Up</a></p>
+                <p style="margin-top: 1rem;"><a href="index.html">Back to Home</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

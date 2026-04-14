@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - LEARN_X_CODE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">LEARN_X_CODE</span>
+                <span class="logo-bracket">/&gt;</span>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">LT</div>
+                <div class="user-name" id="userName">Lasya Teacher</div>
+                <div class="user-role">Teacher</div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                    <polyline points="9,22 9,12 15,12 15,22"/>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-section="playlists">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23,7 16,12 23,17 23,7"/>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                </svg>
+                <span>Manage Playlists</span>
+            </a>
+            <a href="#" class="nav-item" data-section="students">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 010 7.75"/>
+                </svg>
+                <span>Students</span>
+            </a>
+            <a href="#" class="nav-item" data-section="analytics">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"/>
+                    <line x1="12" y1="20" x2="12" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+                <span>Analytics</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="btn-logout" onclick="auth.logout()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                    <polyline points="16,17 21,12 16,7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboardSection" class="dashboard-section">
+            <div class="dashboard-header">
+                <h1>Teacher Dashboard</h1>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Students</h3>
+                    <div class="value">156</div>
+                    <div class="label">Enrolled</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Playlists</h3>
+                    <div class="value">8</div>
+                    <div class="label">Active Courses</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Quizzes Taken</h3>
+                    <div class="value">342</div>
+                    <div class="label">This Month</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Avg. Pass Rate</h3>
+                    <div class="value">78%</div>
+                    <div class="label">All Quizzes</div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2>Recent Quiz Results</h2>
+                </div>
+                <div class="card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Course</th>
+                                <th>Score</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lasya Student</td>
+                                <td>Python</td>
+                                <td>85%</td>
+                                <td>Mar 15, 2024</td>
+                                <td><span class="badge success">Passed</span></td>
+                            </tr>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>JavaScript</td>
+                                <td>92%</td>
+                                <td>Mar 14, 2024</td>
+                                <td><span class="badge success">Passed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jane Smith</td>
+                                <td>Java</td>
+                                <td>55%</td>
+                                <td>Mar 14, 2024</td>
+                                <td><span class="badge error">Failed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Mike Johnson</td>
+                                <td>C++</td>
+                                <td>78%</td>
+                                <td>Mar 13, 2024</td>
+                                <td><span class="badge success">Passed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sarah Williams</td>
+                                <td>SQL</td>
+                                <td>88%</td>
+                                <td>Mar 13, 2024</td>
+                                <td><span class="badge success">Passed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playlists Section -->
+        <section id="playlistsSection" class="dashboard-section hidden">
+            <div class="dashboard-header">
+                <h1>Manage Playlists</h1>
+                <button class="btn-primary" onclick="showAddPlaylistModal()">
+                    + Add New Playlist
+                </button>
+            </div>
+
+            <div class="content-card">
+                <div class="card-body">
+                    <div class="course-grid" id="playlistsList">
+                        <!-- Playlists will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Playlist Videos -->
+            <div class="content-card hidden" id="editPlaylistCard">
+                <div class="card-header">
+                    <h2 id="editPlaylistName">Edit Python Videos</h2>
+                    <button class="btn-secondary" onclick="hideEditPlaylist()" style="padding: 0.5rem 1rem;">
+                        Back to Playlists
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="form-group mb-3">
+                        <button class="btn-primary" onclick="showAddVideoModal()">
+                            + Add Video
+                        </button>
+                    </div>
+                    <div class="video-list" id="playlistVideosList">
+                        <!-- Videos will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Students Section -->
+        <section id="studentsSection" class="dashboard-section hidden">
+            <div class="dashboard-header">
+                <h1>Students</h1>
+            </div>
+
+            <div class="content-card">
+                <div class="card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Courses Enrolled</th>
+                                <th>Quizzes Taken</th>
+                                <th>Avg. Score</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsList">
+                            <tr>
+                                <td>Lasya Student</td>
+                                <td>lasya1@gmail.com</td>
+                                <td>6</td>
+                                <td>3</td>
+                                <td>85%</td>
+                                <td><span class="badge success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>92%</td>
+                                <td><span class="badge success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jane Smith</td>
+                                <td>jane@example.com</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>68%</td>
+                                <td><span class="badge success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>Mike Johnson</td>
+                                <td>mike@example.com</td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>78%</td>
+                                <td><span class="badge success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sarah Williams</td>
+                                <td>sarah@example.com</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>88%</td>
+                                <td><span class="badge warning">Inactive</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analyticsSection" class="dashboard-section hidden">
+            <div class="dashboard-header">
+                <h1>Analytics</h1>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Python</h3>
+                    <div class="value">89%</div>
+                    <div class="label">Pass Rate</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Java</h3>
+                    <div class="value">72%</div>
+                    <div class="label">Pass Rate</div>
+                </div>
+                <div class="stat-card">
+                    <h3>JavaScript</h3>
+                    <div class="value">85%</div>
+                    <div class="label">Pass Rate</div>
+                </div>
+                <div class="stat-card">
+                    <h3>C/C++</h3>
+                    <div class="value">68%</div>
+                    <div class="label">Pass Rate</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-header">
+                    <h2>Course Performance Overview</h2>
+                </div>
+                <div class="card-body">
+                    <div class="video-list">
+                        <div class="video-item">
+                            <div class="video-thumbnail" style="background: linear-gradient(135deg, #3776AB, #FFD43B);">
+                                <span style="font-family: var(--font-display); font-weight: 700;">Py</span>
+                            </div>
+                            <div class="video-info" style="flex: 2;">
+                                <h4>Python</h4>
+                                <p>156 students enrolled - 89% pass rate</p>
+                                <div class="progress-bar" style="width: 100%; margin-top: 0.5rem;">
+                                    <div class="progress-fill" style="width: 89%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumbnail" style="background: linear-gradient(135deg, #007396, #ED8B00);">
+                                <span style="font-family: var(--font-display); font-weight: 700;">Ja</span>
+                            </div>
+                            <div class="video-info" style="flex: 2;">
+                                <h4>Java</h4>
+                                <p>134 students enrolled - 72% pass rate</p>
+                                <div class="progress-bar" style="width: 100%; margin-top: 0.5rem;">
+                                    <div class="progress-fill" style="width: 72%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumbnail" style="background: linear-gradient(135deg, #F7DF1E, #323330);">
+                                <span style="font-family: var(--font-display); font-weight: 700; color: #323330;">JS</span>
+                            </div>
+                            <div class="video-info" style="flex: 2;">
+                                <h4>JavaScript</h4>
+                                <p>145 students enrolled - 85% pass rate</p>
+                                <div class="progress-bar" style="width: 100%; margin-top: 0.5rem;">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumbnail" style="background: linear-gradient(135deg, #00599C, #004482);">
+                                <span style="font-family: var(--font-display); font-weight: 700;">C++</span>
+                            </div>
+                            <div class="video-info" style="flex: 2;">
+                                <h4>C/C++</h4>
+                                <p>98 students enrolled - 68% pass rate</p>
+                                <div class="progress-bar" style="width: 100%; margin-top: 0.5rem;">
+                                    <div class="progress-fill" style="width: 68%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumbnail" style="background: linear-gradient(135deg, #336791, #F29111);">
+                                <span style="font-family: var(--font-display); font-weight: 700;">DB</span>
+                            </div>
+                            <div class="video-info" style="flex: 2;">
+                                <h4>SQL</h4>
+                                <p>112 students enrolled - 82% pass rate</p>
+                                <div class="progress-bar" style="width: 100%; margin-top: 0.5rem;">
+                                    <div class="progress-fill" style="width: 82%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Playlist Modal -->
+    <div class="modal-overlay" id="addPlaylistModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add New Playlist</h3>
+                <button class="modal-close" onclick="closeModal('addPlaylistModal')">&times;</button>
+            </div>
+            <form id="addPlaylistForm" onsubmit="addPlaylist(event)">
+                <div class="form-group">
+                    <label for="playlistName">Course Name</label>
+                    <input type="text" id="playlistName" placeholder="e.g., Python Programming" required>
+                </div>
+                <div class="form-group">
+                    <label for="playlistIcon">Icon Text (2-3 chars)</label>
+                    <input type="text" id="playlistIcon" placeholder="e.g., Py" maxlength="3" required>
+                </div>
+                <div class="form-group">
+                    <label for="playlistColor">Gradient Colors</label>
+                    <select id="playlistColor">
+                        <option value="linear-gradient(135deg, #3776AB, #FFD43B)">Python (Blue-Yellow)</option>
+                        <option value="linear-gradient(135deg, #007396, #ED8B00)">Java (Blue-Orange)</option>
+                        <option value="linear-gradient(135deg, #F7DF1E, #323330)">JavaScript (Yellow-Black)</option>
+                        <option value="linear-gradient(135deg, #00599C, #004482)">C/C++ (Blue)</option>
+                        <option value="linear-gradient(135deg, #336791, #F29111)">SQL (Blue-Orange)</option>
+                        <option value="linear-gradient(135deg, #61DAFB, #20232A)">React (Cyan-Dark)</option>
+                        <option value="linear-gradient(135deg, #E34F26, #1572B6)">HTML/CSS (Orange-Blue)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="playlistDescription">Description</label>
+                    <textarea id="playlistDescription" placeholder="Course description..." required></textarea>
+                </div>
+                <button type="submit" class="btn-login">Add Playlist</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Video Modal -->
+    <div class="modal-overlay" id="addVideoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add New Video</h3>
+                <button class="modal-close" onclick="closeModal('addVideoModal')">&times;</button>
+            </div>
+            <form id="addVideoForm" onsubmit="addVideo(event)">
+                <div class="form-group">
+                    <label for="videoTitle">Video Title</label>
+                    <input type="text" id="videoTitle" placeholder="e.g., Introduction to Python" required>
+                </div>
+                <div class="form-group">
+                    <label for="videoUrl">YouTube URL</label>
+                    <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." required>
+                </div>
+                <div class="form-group">
+                    <label for="videoDuration">Duration</label>
+                    <input type="text" id="videoDuration" placeholder="e.g., 15:30" required>
+                </div>
+                <button type="submit" class="btn-login">Add Video</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/quiz-data.js"></script>
+    <script src="js/teacher.js"></script>
+</body>
+</html>

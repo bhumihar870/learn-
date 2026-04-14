@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - LEARN_X_CODE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">LEARN_X_CODE</span>
+                <span class="logo-bracket">/&gt;</span>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">LS</div>
+                <div class="user-name" id="userName">Lasya Student</div>
+                <div class="user-role">Student</div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                    <polyline points="9,22 9,12 15,12 15,22"/>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-section="courses">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                </svg>
+                <span>Courses</span>
+            </a>
+            <a href="#" class="nav-item" data-section="quiz">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 11l3 3L22 4"/>
+                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                </svg>
+                <span>Take Quiz</span>
+            </a>
+            <a href="#" class="nav-item" data-section="certificates">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
+                </svg>
+                <span>Certificates</span>
+            </a>
+            <a href="#" class="nav-item" data-section="progress">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="20" x2="12" y2="10"/>
+                    <line x1="18" y1="20" x2="18" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="16"/>
+                </svg>
+                <span>My Progress</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="btn-logout" onclick="auth.logout()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                    <polyline points="16,17 21,12 16,7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="menuToggle" style="display:none; position:fixed; top:1rem; left:1rem; z-index:999; background:var(--primary); border:none; padding:0.5rem; border-radius:8px; cursor:pointer;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" width="24" height="24">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+
+        <!-- Dashboard Section -->
+        <section id="dashboardSection" class="dashboard-section">
+            <div class="dashboard-header">
+                <h1>Welcome back, <span id="welcomeName">Lasya</span>!</h1>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Courses Enrolled</h3>
+                    <div class="value" id="coursesEnrolled">6</div>
+                    <div class="label">Programming Languages</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Videos Watched</h3>
+                    <div class="value" id="videosWatched">24</div>
+                    <div class="label">Total Tutorials</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Quizzes Completed</h3>
+                    <div class="value" id="quizzesCompleted">3</div>
+                    <div class="label">With Certificates</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Average Score</h3>
+                    <div class="value" id="avgScore">85%</div>
+                    <div class="label">Quiz Performance</div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2>Continue Learning</h2>
+                </div>
+                <div class="card-body">
+                    <div class="course-grid">
+                        <div class="course-item" onclick="showSection('courses')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #3776AB, #FFD43B);">Py</div>
+                                <h3>Python</h3>
+                            </div>
+                            <p>Continue with Functions and Modules</p>
+                            <div class="course-item-meta">
+                                <span>Progress: 60%</span>
+                                <span>12 videos left</span>
+                            </div>
+                        </div>
+                        <div class="course-item" onclick="showSection('courses')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #F7DF1E, #323330);">JS</div>
+                                <h3>JavaScript</h3>
+                            </div>
+                            <p>Learn DOM Manipulation</p>
+                            <div class="course-item-meta">
+                                <span>Progress: 40%</span>
+                                <span>18 videos left</span>
+                            </div>
+                        </div>
+                        <div class="course-item" onclick="showSection('courses')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #007396, #ED8B00);">Ja</div>
+                                <h3>Java</h3>
+                            </div>
+                            <p>Object Oriented Programming</p>
+                            <div class="course-item-meta">
+                                <span>Progress: 25%</span>
+                                <span>22 videos left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="coursesSection" class="dashboard-section hidden">
+            <div class="dashboard-header">
+                <h1>Available Courses</h1>
+            </div>
+
+            <div class="content-card">
+                <div class="card-body">
+                    <div class="course-grid" id="coursesList">
+                        <!-- Courses will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Videos (shown when a course is selected) -->
+            <div class="content-card hidden" id="courseVideosCard">
+                <div class="card-header">
+                    <h2 id="selectedCourseName">Python Videos</h2>
+                    <button class="btn-secondary" onclick="hideCourseVideos()" style="padding: 0.5rem 1rem;">
+                        Back to Courses
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="video-list" id="videosList">
+                        <!-- Videos will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quizSection" class="dashboard-section hidden">
+            <div class="dashboard-header">
+                <h1>Take a Quiz</h1>
+            </div>
+
+            <!-- Quiz Selection -->
+            <div class="content-card" id="quizSelectionCard">
+                <div class="card-header">
+                    <h2>Select a Programming Language</h2>
+                </div>
+                <div class="card-body">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Each quiz contains 5 random questions from a pool of 100+ questions. 
+                        Score 60% or higher to earn a certificate!
+                    </p>
+                    <div class="course-grid">
+                        <div class="course-item" onclick="startQuiz('python')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #3776AB, #FFD43B);">Py</div>
+                                <h3>Python Quiz</h3>
+                            </div>
+                            <p>Test your Python knowledge</p>
+                            <div class="course-item-meta">
+                                <span>5 Questions</span>
+                                <span>10 Minutes</span>
+                            </div>
+                        </div>
+                        <div class="course-item" onclick="startQuiz('java')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #007396, #ED8B00);">Ja</div>
+                                <h3>Java Quiz</h3>
+                            </div>
+                            <p>Test your Java knowledge</p>
+                            <div class="course-item-meta">
+                                <span>5 Questions</span>
+                                <span>10 Minutes</span>
+                            </div>
+                        </div>
+                        <div class="course-item" onclick="startQuiz('javascript')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #F7DF1E, #323330);">JS</div>
+                                <h3>JavaScript Quiz</h3>
+                            </div>
+                            <p>Test your JavaScript knowledge</p>
+                            <div class="course-item-meta">
+                                <span>5 Questions</span>
+                                <span>10 Minutes</span>
+                            </div>
+                        </div>
+                        <div class="course-item" onclick="startQuiz('c')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #00599C, #004482);">C</div>
+                                <h3>C Programming Quiz</h3>
+                            </div>
+                            <p>Test your C knowledge</p>
+                            <div class="course-item-meta">
+                                <span>5 Questions</span>
+                                <span>10 Minutes</span>
+                            </div>
+                        </div>
+                        <div class="course-item" onclick="startQuiz('cpp')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #00599C, #004482);">C++</div>
+                                <h3>C++ Quiz</h3>
+                            </div>
+                            <p>Test your C++ knowledge</p>
+                            <div class="course-item-meta">
+                                <span>5 Questions</span>
+                                <span>10 Minutes</span>
+                            </div>
+                        </div>
+                        <div class="course-item" onclick="startQuiz('sql')">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #336791, #F29111);">DB</div>
+                                <h3>SQL Quiz</h3>
+                            </div>
+                            <p>Test your SQL knowledge</p>
+                            <div class="course-item-meta">
+                                <span>5 Questions</span>
+                                <span>10 Minutes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Questions (shown during quiz) -->
+            <div class="quiz-container hidden" id="quizQuestionsContainer">
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <span id="quizLanguageName">Python</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quizProgressBar" style="width: 20%;"></div>
+                        </div>
+                        <span id="quizQuestionCount">1/5</span>
+                    </div>
+                    <div class="quiz-timer" id="quizTimer">10:00</div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number" id="questionNumber">Question 1 of 5</div>
+                    <div class="question-text" id="questionText">
+                        What is the output of print(2 ** 3)?
+                    </div>
+                    <div class="options-list" id="optionsList">
+                        <!-- Options will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <div class="quiz-actions">
+                    <button class="btn-quiz prev" id="prevBtn" onclick="prevQuestion()">Previous</button>
+                    <button class="btn-quiz next" id="nextBtn" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <!-- Quiz Results (shown after completion) -->
+            <div class="result-container hidden" id="quizResultContainer">
+                <div class="result-card">
+                    <div class="result-icon" id="resultIcon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                            <polyline points="22,4 12,14.01 9,11.01"/>
+                        </svg>
+                    </div>
+                    <div class="result-score" id="resultScore">80%</div>
+                    <div class="result-message" id="resultMessage">Congratulations!</div>
+                    <div class="result-details" id="resultDetails">
+                        You answered 4 out of 5 questions correctly.
+                    </div>
+                    <div class="result-actions">
+                        <button class="btn-primary" id="getCertificateBtn" onclick="showCertificate()">
+                            Get Certificate
+                        </button>
+                        <button class="btn-secondary" onclick="retakeQuiz()">
+                            Retake Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificatesSection" class="dashboard-section hidden">
+            <div class="dashboard-header">
+                <h1>My Certificates</h1>
+            </div>
+
+            <div class="content-card">
+                <div class="card-body">
+                    <div class="course-grid" id="certificatesList">
+                        <!-- Certificates will be loaded dynamically -->
+                        <div class="course-item" onclick="viewCertificate('python', 85)">
+                            <div class="course-item-header">
+                                <div class="course-item-icon" style="background: linear-gradient(135deg, #3776AB, #FFD43B);">Py</div>
+                                <h3>Python Certificate</h3>
+                            </div>
+                            <p>Earned on: March 15, 2024</p>
+                            <div class="course-item-meta">
+                                <span>Score: 85%</span>
+                                <span class="badge success">Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progressSection" class="dashboard-section hidden">
+            <div class="dashboard-header">
+                <h1>My Learning Progress</h1>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Study Time</h3>
+                    <div class="value">24h</div>
+                    <div class="label">This Month</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Courses Completed</h3>
+                    <div class="value">2</div>
+                    <div class="label">Out of 6</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Current Streak</h3>
+                    <div class="value">7</div>
+                    <div class="label">Days</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Points</h3>
+                    <div class="value">1,250</div>
+                    <div class="label">XP Earned</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-header">
+                    <h2>Course Progress</h2>
+                </div>
+                <div class="card-body">
+                    <div class="video-list">
+                        <div class="video-item">
+                            <div class="video-thumbnail" style="background: linear-gradient(135deg, #3776AB, #FFD43B);">
+                                <span style="font-family: var(--font-display); font-weight: 700;">Py</span>
+                            </div>
+                            <div class="video-info">
+                                <h4>Python</h4>
+                                <p>60% Complete - 12 videos remaining</p>
+                                <div class="progress-bar" style="width: 100%; margin-top: 0.5rem;">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumbnail" style="background: linear-gradient(135deg, #F7DF1E, #323330);">
+                                <span style="font-family: var(--font-display); font-weight: 700; color: #323330;">JS</span>
+                            </div>
+                            <div class="video-info">
+                                <h4>JavaScript</h4>
+                                <p>40% Complete - 18 videos remaining</p>
+                                <div class="progress-bar" style="width: 100%; margin-top: 0.5rem;">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumbnail" style="background: linear-gradient(135deg, #007396, #ED8B00);">
+                                <span style="font-family: var(--font-display); font-weight: 700;">Ja</span>
+                            </div>
+                            <div class="video-info">
+                                <h4>Java</h4>
+                                <p>25% Complete - 22 videos remaining</p>
+                                <div class="progress-bar" style="width: 100%; margin-top: 0.5rem;">
+                                    <div class="progress-fill" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Certificate Modal -->
+    <div class="modal-overlay" id="certificateModal">
+        <div class="modal" style="max-width: 900px;">
+            <div class="modal-header">
+                <h3>Your Certificate</h3>
+                <button class="modal-close" onclick="closeCertificateModal()">&times;</button>
+            </div>
+            <div class="certificate" id="certificateContent">
+                <div class="certificate-header">
+                    <div class="certificate-logo">
+                        <span class="logo-bracket">&lt;</span>
+                        <span class="logo-text">LEARN_X_CODE</span>
+                        <span class="logo-bracket">/&gt;</span>
+                    </div>
+                    <h1 class="certificate-title">Certificate of Completion</h1>
+                    <p class="certificate-subtitle">This is to certify that</p>
+                </div>
+                <div class="certificate-body">
+                    <div class="certificate-name" id="certName">Lasya Student</div>
+                    <p>has successfully completed the</p>
+                    <div class="certificate-course" id="certCourse">Python Programming Course</div>
+                    <p>with a score of <strong id="certScore">85%</strong></p>
+                    <p class="certificate-date" id="certDate">Issued on: March 15, 2024</p>
+                </div>
+                <div class="certificate-footer">
+                    <div class="signature">
+                        <div class="signature-line"></div>
+                        <div class="signature-name">LEARN_X_CODE Team</div>
+                        <div class="signature-title">Platform Director</div>
+                    </div>
+                    <div class="certificate-id" id="certId">Certificate ID: LXC-2024-001234</div>
+                </div>
+            </div>
+            <div class="certificate-actions" style="margin-top: 1.5rem;">
+                <button class="btn-primary" onclick="downloadCertificate()">
+                    Download PDF
+                </button>
+                <button class="btn-secondary" onclick="closeCertificateModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/quiz-data.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>

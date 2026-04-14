@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - LEARN_X_CODE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Student Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span>&lt;LEARN_X_CODE/&gt;</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="showSection('dashboard')">
+                    <span class="nav-icon">&#127968;</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('quiz')">
+                    <span class="nav-icon">&#128221;</span>
+                    <span>Attempt Quiz</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('study')">
+                    <span class="nav-icon">&#128218;</span>
+                    <span>Study Time</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('certificates')">
+                    <span class="nav-icon">&#127942;</span>
+                    <span>My Certificates</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('progress')">
+                    <span class="nav-icon">&#128200;</span>
+                    <span>My Progress</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <span class="nav-icon">&#128682;</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="welcome-text">
+                    <h1>Welcome, <span id="studentName">Student</span>!</h1>
+                    <p>Ready to learn something new today?</p>
+                </div>
+                <div class="user-profile">
+                    <span class="user-avatar">&#128100;</span>
+                    <span>lasya1@gmail.com</span>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section class="section dashboard-section" id="dashboardSection">
+                <h2>Your Learning Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">&#128221;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="quizzesTaken">0</span>
+                            <span class="stat-label">Quizzes Taken</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">&#127942;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="certificatesEarned">0</span>
+                            <span class="stat-label">Certificates Earned</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">&#128218;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="coursesAccessed">0</span>
+                            <span class="stat-label">Courses Accessed</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">&#9989;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="avgScore">0%</span>
+                            <span class="stat-label">Average Score</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="showSection('quiz')">
+                            <span>&#128221;</span> Start New Quiz
+                        </button>
+                        <button class="action-btn" onclick="showSection('study')">
+                            <span>&#128218;</span> Browse Courses
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section class="section quiz-section hidden" id="quizSection">
+                <!-- Quiz Start Screen -->
+                <div id="quizStart">
+                    <h2>Programming Quiz</h2>
+                    <div class="quiz-info-card">
+                        <h3>Ready to Test Your Knowledge?</h3>
+                        <ul class="quiz-rules">
+                            <li>5 random questions from our database of 100+ questions</li>
+                            <li>Questions cover various programming languages</li>
+                            <li>Get a certificate based on your score</li>
+                            <li>You can retake the quiz anytime</li>
+                        </ul>
+                        <button class="btn-primary" onclick="startQuiz()">Start Quiz</button>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Screen -->
+                <div id="quizQuestions" class="hidden">
+                    <div class="quiz-header">
+                        <span class="quiz-progress">Question <span id="currentQ">1</span> of 5</span>
+                        <span class="quiz-timer" id="quizTimer">05:00</span>
+                    </div>
+                    <div class="quiz-card">
+                        <h3 id="questionText">Question will appear here</h3>
+                        <div class="options-container" id="optionsContainer">
+                            <!-- Options will be inserted here -->
+                        </div>
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
+                        <button class="btn-primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Quiz Result Screen -->
+                <div id="quizResult" class="hidden">
+                    <div class="result-card">
+                        <h2>Quiz Completed!</h2>
+                        <div class="score-circle">
+                            <span id="scoreValue">0</span>
+                            <span class="score-label">out of 5</span>
+                        </div>
+                        <p id="resultMessage">Great job!</p>
+                        <div class="certificate-preview">
+                            <h3>Your Certificate is Ready!</h3>
+                            <div class="name-input-group">
+                                <label for="certName">Enter Your Name for Certificate:</label>
+                                <input type="text" id="certName" placeholder="Your Full Name" value="Lasya">
+                            </div>
+                            <button class="btn-primary" onclick="generateCertificate()">
+                                <span>&#128196;</span> Download Certificate
+                            </button>
+                        </div>
+                        <button class="btn-secondary" onclick="retakeQuiz()">Retake Quiz</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Study Time Section -->
+            <section class="section study-section hidden" id="studySection">
+                <h2>Study Time - Video Playlists</h2>
+                <p class="section-desc">Learn programming languages with curated YouTube tutorials</p>
+                
+                <div class="playlists-grid" id="playlistsGrid">
+                    <!-- C Programming -->
+                    <div class="playlist-card" onclick="trackCourseAccess('C Programming')">
+                        <div class="playlist-thumbnail" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span class="play-icon">&#9658;</span>
+                            <span class="playlist-lang">C</span>
+                        </div>
+                        <div class="playlist-info">
+                            <h3>Learn C in 30 Days</h3>
+                            <p>10 Videos | Beginner to Advanced</p>
+                            <div class="video-list">
+                                <a href="https://www.youtube.com/watch?v=KJgsSFOSQv0" target="_blank" class="video-link">1. C Tutorial for Beginners</a>
+                                <a href="https://www.youtube.com/watch?v=87SH2Cn0s9A" target="_blank" class="video-link">2. Variables & Data Types</a>
+                                <a href="https://www.youtube.com/watch?v=_MF8L7ZxzN8" target="_blank" class="video-link">3. Operators in C</a>
+                                <a href="https://www.youtube.com/watch?v=Bz4MxDeEM6k" target="_blank" class="video-link">4. Control Statements</a>
+                                <a href="https://www.youtube.com/watch?v=qMlnFwYdqIw" target="_blank" class="video-link">5. Loops in C</a>
+                                <a href="https://www.youtube.com/watch?v=3lQEunpmtRA" target="_blank" class="video-link">6. Functions in C</a>
+                                <a href="https://www.youtube.com/watch?v=1JsJKwB3U4g" target="_blank" class="video-link">7. Arrays in C</a>
+                                <a href="https://www.youtube.com/watch?v=zuegQmMdy8M" target="_blank" class="video-link">8. Pointers in C</a>
+                                <a href="https://www.youtube.com/watch?v=dq4PO6KGKnc" target="_blank" class="video-link">9. Structures in C</a>
+                                <a href="https://www.youtube.com/watch?v=rLf3jnHxSmU" target="_blank" class="video-link">10. File Handling in C</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Python Programming -->
+                    <div class="playlist-card" onclick="trackCourseAccess('Python Programming')">
+                        <div class="playlist-thumbnail" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span class="play-icon">&#9658;</span>
+                            <span class="playlist-lang">PY</span>
+                        </div>
+                        <div class="playlist-info">
+                            <h3>Python Complete Course</h3>
+                            <p>10 Videos | Zero to Hero</p>
+                            <div class="video-list">
+                                <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" target="_blank" class="video-link">1. Python Tutorial Full Course</a>
+                                <a href="https://www.youtube.com/watch?v=kqtD5dpn9C8" target="_blank" class="video-link">2. Python Basics for Beginners</a>
+                                <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="video-link">3. Learn Python - Full Course</a>
+                                <a href="https://www.youtube.com/watch?v=8DvywoWv6fI" target="_blank" class="video-link">4. Python in One Video</a>
+                                <a href="https://www.youtube.com/watch?v=YYXdXT2l-Gg" target="_blank" class="video-link">5. Python Functions</a>
+                                <a href="https://www.youtube.com/watch?v=W8KRzm-HUcc" target="_blank" class="video-link">6. Python OOP Tutorial</a>
+                                <a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="video-link">7. Python Data Structures</a>
+                                <a href="https://www.youtube.com/watch?v=pTB0EiLXUC8" target="_blank" class="video-link">8. Python for Data Science</a>
+                                <a href="https://www.youtube.com/watch?v=ua-CiDNNj30" target="_blank" class="video-link">9. Python Projects</a>
+                                <a href="https://www.youtube.com/watch?v=XKHEtdqhLK8" target="_blank" class="video-link">10. Advanced Python</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Java Programming -->
+                    <div class="playlist-card" onclick="trackCourseAccess('Java Programming')">
+                        <div class="playlist-thumbnail" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <span class="play-icon">&#9658;</span>
+                            <span class="playlist-lang">JAVA</span>
+                        </div>
+                        <div class="playlist-info">
+                            <h3>Java Masterclass</h3>
+                            <p>10 Videos | Complete Tutorial</p>
+                            <div class="video-list">
+                                <a href="https://www.youtube.com/watch?v=eIrMbAQSU34" target="_blank" class="video-link">1. Java Tutorial for Beginners</a>
+                                <a href="https://www.youtube.com/watch?v=grEKMHGYyns" target="_blank" class="video-link">2. Java Full Course</a>
+                                <a href="https://www.youtube.com/watch?v=xk4_1vDrzzo" target="_blank" class="video-link">3. Java OOP Concepts</a>
+                                <a href="https://www.youtube.com/watch?v=GoXwIVyNvX0" target="_blank" class="video-link">4. Java Collections</a>
+                                <a href="https://www.youtube.com/watch?v=r59xYe3Vyks" target="_blank" class="video-link">5. Java Exceptions</a>
+                                <a href="https://www.youtube.com/watch?v=hBh_CC5y8-s" target="_blank" class="video-link">6. Java Multithreading</a>
+                                <a href="https://www.youtube.com/watch?v=rPSL1alFIjI" target="_blank" class="video-link">7. Java File I/O</a>
+                                <a href="https://www.youtube.com/watch?v=bm0OyhwFDuY" target="_blank" class="video-link">8. Java GUI Swing</a>
+                                <a href="https://www.youtube.com/watch?v=Qgl81fPcLc8" target="_blank" class="video-link">9. Java JDBC Database</a>
+                                <a href="https://www.youtube.com/watch?v=Ae-r8hsbPUo" target="_blank" class="video-link">10. Java Projects</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JavaScript Programming -->
+                    <div class="playlist-card" onclick="trackCourseAccess('JavaScript Programming')">
+                        <div class="playlist-thumbnail" style="background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);">
+                            <span class="play-icon">&#9658;</span>
+                            <span class="playlist-lang">JS</span>
+                        </div>
+                        <div class="playlist-info">
+                            <h3>JavaScript Essentials</h3>
+                            <p>10 Videos | Web Development</p>
+                            <div class="video-list">
+                                <a href="https://www.youtube.com/watch?v=W6NZfCO5SIk" target="_blank" class="video-link">1. JavaScript Tutorial for Beginners</a>
+                                <a href="https://www.youtube.com/watch?v=PkZNo7MFNFg" target="_blank" class="video-link">2. Learn JavaScript Full Course</a>
+                                <a href="https://www.youtube.com/watch?v=hdI2bqOjy3c" target="_blank" class="video-link">3. JavaScript Crash Course</a>
+                                <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ" target="_blank" class="video-link">4. Event Loop Explained</a>
+                                <a href="https://www.youtube.com/watch?v=DHjqpvDnNGE" target="_blank" class="video-link">5. ES6 Features</a>
+                                <a href="https://www.youtube.com/watch?v=_8gHHBlbziw" target="_blank" class="video-link">6. Async JavaScript</a>
+                                <a href="https://www.youtube.com/watch?v=Qqx_wzMmFeA" target="_blank" class="video-link">7. DOM Manipulation</a>
+                                <a href="https://www.youtube.com/watch?v=cuEtnrL9-H0" target="_blank" class="video-link">8. Fetch API & AJAX</a>
+                                <a href="https://www.youtube.com/watch?v=NCwa_xi0Uuc" target="_blank" class="video-link">9. JavaScript Projects</a>
+                                <a href="https://www.youtube.com/watch?v=jS4aFq5-91M" target="_blank" class="video-link">10. Advanced JavaScript</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- C++ Programming -->
+                    <div class="playlist-card" onclick="trackCourseAccess('C++ Programming')">
+                        <div class="playlist-thumbnail" style="background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);">
+                            <span class="play-icon">&#9658;</span>
+                            <span class="playlist-lang">C++</span>
+                        </div>
+                        <div class="playlist-info">
+                            <h3>C++ Complete Guide</h3>
+                            <p>10 Videos | Object Oriented</p>
+                            <div class="video-list">
+                                <a href="https://www.youtube.com/watch?v=vLnPwxZdW4Y" target="_blank" class="video-link">1. C++ Tutorial for Beginners</a>
+                                <a href="https://www.youtube.com/watch?v=ZzaPdXTrSb8" target="_blank" class="video-link">2. C++ Full Course</a>
+                                <a href="https://www.youtube.com/watch?v=Rub-JsjMhWY" target="_blank" class="video-link">3. C++ OOP Concepts</a>
+                                <a href="https://www.youtube.com/watch?v=wN0x9eZLix4" target="_blank" class="video-link">4. C++ STL Tutorial</a>
+                                <a href="https://www.youtube.com/watch?v=BvR1Pgzzr38" target="_blank" class="video-link">5. C++ Pointers</a>
+                                <a href="https://www.youtube.com/watch?v=3AIFY-xKjDo" target="_blank" class="video-link">6. C++ Templates</a>
+                                <a href="https://www.youtube.com/watch?v=KAWA1DuvCnQ" target="_blank" class="video-link">7. C++ File Handling</a>
+                                <a href="https://www.youtube.com/watch?v=uIHhwnPq5_Y" target="_blank" class="video-link">8. C++ Exception Handling</a>
+                                <a href="https://www.youtube.com/watch?v=GQp1zzTwrIg" target="_blank" class="video-link">9. C++ Data Structures</a>
+                                <a href="https://www.youtube.com/watch?v=Iho2EdJgau4" target="_blank" class="video-link">10. C++ Projects</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HTML/CSS -->
+                    <div class="playlist-card" onclick="trackCourseAccess('HTML CSS')">
+                        <div class="playlist-thumbnail" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                            <span class="play-icon">&#9658;</span>
+                            <span class="playlist-lang">HTML</span>
+                        </div>
+                        <div class="playlist-info">
+                            <h3>HTML & CSS Fundamentals</h3>
+                            <p>10 Videos | Web Basics</p>
+                            <div class="video-list">
+                                <a href="https://www.youtube.com/watch?v=UB1O30fR-EE" target="_blank" class="video-link">1. HTML Crash Course</a>
+                                <a href="https://www.youtube.com/watch?v=yfoY53QXEnI" target="_blank" class="video-link">2. CSS Crash Course</a>
+                                <a href="https://www.youtube.com/watch?v=pQN-pnXPaVg" target="_blank" class="video-link">3. HTML Full Course</a>
+                                <a href="https://www.youtube.com/watch?v=1Rs2ND1ryYc" target="_blank" class="video-link">4. CSS Complete Course</a>
+                                <a href="https://www.youtube.com/watch?v=JJSoEo8JSnc" target="_blank" class="video-link">5. Flexbox Tutorial</a>
+                                <a href="https://www.youtube.com/watch?v=jV8B24rSN5o" target="_blank" class="video-link">6. CSS Grid Layout</a>
+                                <a href="https://www.youtube.com/watch?v=Wm6CUkswsNw" target="_blank" class="video-link">7. Responsive Design</a>
+                                <a href="https://www.youtube.com/watch?v=8MgpE2DTTKA" target="_blank" class="video-link">8. CSS Animations</a>
+                                <a href="https://www.youtube.com/watch?v=FazgJVnrVuI" target="_blank" class="video-link">9. Build a Website</a>
+                                <a href="https://www.youtube.com/watch?v=Trjf2ak0DPk" target="_blank" class="video-link">10. Portfolio Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certificates Section -->
+            <section class="section certificates-section hidden" id="certificatesSection">
+                <h2>My Certificates</h2>
+                <div class="certificates-list" id="certificatesList">
+                    <p class="no-certs">No certificates yet. Take a quiz to earn your first certificate!</p>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="section progress-section hidden" id="progressSection">
+                <h2>My Progress</h2>
+                <div class="progress-content">
+                    <div class="progress-card">
+                        <h3>Learning Statistics</h3>
+                        <div class="progress-stats">
+                            <div class="progress-item">
+                                <span class="progress-label">Total Quizzes Attempted:</span>
+                                <span class="progress-value" id="totalQuizzes">0</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Total Correct Answers:</span>
+                                <span class="progress-value" id="totalCorrect">0</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Courses Viewed:</span>
+                                <span class="progress-value" id="coursesViewed">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-card">
+                        <h3>Courses Accessed</h3>
+                        <div class="courses-accessed-list" id="coursesAccessedList">
+                            <p class="no-courses">No courses accessed yet. Start learning!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Hidden Certificate Canvas -->
+    <canvas id="certificateCanvas" width="1000" height="700" style="display:none;"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

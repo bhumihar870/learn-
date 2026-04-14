@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN_X_CODE - Master Programming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="landing-page">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="floating-code" id="floatingCode"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-bracket">&lt;</span>
+            <span class="logo-text">LEARN_X_CODE</span>
+            <span class="logo-bracket">/&gt;</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#courses">Courses</a>
+            <a href="#about">About</a>
+            <a href="login.html" class="btn-nav">Login</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="LEARN_X_CODE">LEARN_X_CODE</h1>
+            </div>
+            <p class="tagline typing-effect">Master the Art of Programming</p>
+            <div class="code-snippet">
+                <pre><code><span class="keyword">while</span>(<span class="variable">alive</span>) {
+    <span class="function">eat</span>();
+    <span class="function">sleep</span>();
+    <span class="function">code</span>();
+    <span class="function">repeat</span>();
+}</code></pre>
+            </div>
+            <div class="hero-buttons">
+                <a href="login.html" class="btn-primary pulse">
+                    <span>Start Learning</span>
+                    <div class="btn-glow"></div>
+                </a>
+                <a href="#courses" class="btn-secondary">
+                    <span>Explore Courses</span>
+                </a>
+            </div>
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-number" data-count="10">0</span>+
+                    <span class="stat-label">Languages</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="100">0</span>+
+                    <span class="stat-label">Quiz Questions</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="50">0</span>+
+                    <span class="stat-label">Video Tutorials</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="terminal-btn red"></span>
+                    <span class="terminal-btn yellow"></span>
+                    <span class="terminal-btn green"></span>
+                    <span class="terminal-title">terminal</span>
+                </div>
+                <div class="terminal-body" id="terminalBody">
+                    <p><span class="prompt">$</span> <span class="typing" id="terminalTyping"></span><span class="cursor">|</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">
+            <span class="bracket">{</span> Why Choose Us <span class="bracket">}</span>
+        </h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                    </svg>
+                </div>
+                <h3>Interactive Learning</h3>
+                <p>Learn by doing with our curated video playlists and hands-on coding challenges.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3>Quiz & Certification</h3>
+                <p>Test your knowledge with 100+ questions and earn premium certificates.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                    </svg>
+                </div>
+                <h3>Multiple Languages</h3>
+                <p>Master C, C++, Java, Python, JavaScript, HTML/CSS, SQL, React, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                </div>
+                <h3>Expert Teachers</h3>
+                <p>Learn from experienced instructors who curate the best content for you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <h2 class="section-title">
+            <span class="bracket">[</span> Our Courses <span class="bracket">]</span>
+        </h2>
+        <div class="courses-carousel">
+            <div class="course-card" data-lang="python">
+                <div class="course-icon python">
+                    <span>Py</span>
+                </div>
+                <h3>Python</h3>
+                <p>From basics to advanced concepts</p>
+                <div class="course-meta">
+                    <span>15+ Videos</span>
+                    <span>Beginner Friendly</span>
+                </div>
+            </div>
+            <div class="course-card" data-lang="java">
+                <div class="course-icon java">
+                    <span>Ja</span>
+                </div>
+                <h3>Java</h3>
+                <p>Object-oriented programming mastery</p>
+                <div class="course-meta">
+                    <span>20+ Videos</span>
+                    <span>Intermediate</span>
+                </div>
+            </div>
+            <div class="course-card" data-lang="javascript">
+                <div class="course-icon javascript">
+                    <span>JS</span>
+                </div>
+                <h3>JavaScript</h3>
+                <p>Web development essentials</p>
+                <div class="course-meta">
+                    <span>18+ Videos</span>
+                    <span>All Levels</span>
+                </div>
+            </div>
+            <div class="course-card" data-lang="cpp">
+                <div class="course-icon cpp">
+                    <span>C++</span>
+                </div>
+                <h3>C/C++</h3>
+                <p>System programming fundamentals</p>
+                <div class="course-meta">
+                    <span>12+ Videos</span>
+                    <span>Advanced</span>
+                </div>
+            </div>
+            <div class="course-card" data-lang="react">
+                <div class="course-icon react">
+                    <span>Re</span>
+                </div>
+                <h3>React</h3>
+                <p>Modern frontend development</p>
+                <div class="course-meta">
+                    <span>15+ Videos</span>
+                    <span>Intermediate</span>
+                </div>
+            </div>
+            <div class="course-card" data-lang="sql">
+                <div class="course-icon sql">
+                    <span>DB</span>
+                </div>
+                <h3>SQL</h3>
+                <p>Database management skills</p>
+                <div class="course-meta">
+                    <span>10+ Videos</span>
+                    <span>Beginner</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2 class="section-title">
+                <span class="bracket">/*</span> About Us <span class="bracket">*/</span>
+            </h2>
+            <div class="about-text">
+                <p>LEARN_X_CODE is your gateway to mastering programming languages. Whether you're a complete beginner or looking to expand your skills, our platform provides structured learning paths with video tutorials, interactive quizzes, and professional certification.</p>
+                <p>Our mission is to make quality programming education accessible to everyone. Join thousands of learners who have transformed their careers through code.</p>
+            </div>
+            <div class="tech-stack">
+                <h3>Technologies You'll Master:</h3>
+                <div class="tech-icons">
+                    <span class="tech-badge">C</span>
+                    <span class="tech-badge">C++</span>
+                    <span class="tech-badge">Java</span>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">HTML/CSS</span>
+                    <span class="tech-badge">SQL</span>
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">Node.js</span>
+                    <span class="tech-badge">Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">LEARN_X_CODE</span>
+                <span class="logo-bracket">/&gt;</span>
+            </div>
+            <p>Empowering developers, one line at a time.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p class="copyright">&copy; 2024 LEARN_X_CODE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/landing.js"></script>
+</body>
+</html>

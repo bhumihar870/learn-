@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - LEARN_X_CODE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Teacher Dashboard -->
+    <div class="dashboard teacher-dashboard">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span>&lt;LEARN_X_CODE/&gt;</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="showTeacherSection('overview')">
+                    <span class="nav-icon">&#127968;</span>
+                    <span>Overview</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showTeacherSection('playlists')">
+                    <span class="nav-icon">&#127909;</span>
+                    <span>Manage Playlists</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showTeacherSection('analytics')">
+                    <span class="nav-icon">&#128200;</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showTeacherSection('students')">
+                    <span class="nav-icon">&#128101;</span>
+                    <span>Students</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <span class="nav-icon">&#128682;</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="welcome-text">
+                    <h1>Welcome, <span id="teacherName">Teacher</span>!</h1>
+                    <p>Manage your courses and track student progress</p>
+                </div>
+                <div class="user-profile">
+                    <span class="user-avatar teacher-avatar">&#128105;&#8205;&#127979;</span>
+                    <span>lasya2@gmail.com</span>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section class="section teacher-overview" id="overviewSection">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card teacher-stat">
+                        <div class="stat-icon">&#128218;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalPlaylists">6</span>
+                            <span class="stat-label">Total Playlists</span>
+                        </div>
+                    </div>
+                    <div class="stat-card teacher-stat">
+                        <div class="stat-icon">&#127909;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalVideos">60</span>
+                            <span class="stat-label">Total Videos</span>
+                        </div>
+                    </div>
+                    <div class="stat-card teacher-stat">
+                        <div class="stat-icon">&#128101;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalStudents">150</span>
+                            <span class="stat-label">Active Students</span>
+                        </div>
+                    </div>
+                    <div class="stat-card teacher-stat">
+                        <div class="stat-icon">&#128293;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="mostPopular">Python</span>
+                            <span class="stat-label">Most Popular Course</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Playlists Chart -->
+                <div class="chart-section">
+                    <h3>Playlist Popularity</h3>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <span class="bar-label">Python</span>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 90%;"></div>
+                            </div>
+                            <span class="bar-value">90%</span>
+                        </div>
+                        <div class="bar-item">
+                            <span class="bar-label">JavaScript</span>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 75%;"></div>
+                            </div>
+                            <span class="bar-value">75%</span>
+                        </div>
+                        <div class="bar-item">
+                            <span class="bar-label">Java</span>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 65%;"></div>
+                            </div>
+                            <span class="bar-value">65%</span>
+                        </div>
+                        <div class="bar-item">
+                            <span class="bar-label">C++</span>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 55%;"></div>
+                            </div>
+                            <span class="bar-value">55%</span>
+                        </div>
+                        <div class="bar-item">
+                            <span class="bar-label">C</span>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 45%;"></div>
+                            </div>
+                            <span class="bar-value">45%</span>
+                        </div>
+                        <div class="bar-item">
+                            <span class="bar-label">HTML/CSS</span>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 40%;"></div>
+                            </div>
+                            <span class="bar-value">40%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manage Playlists Section -->
+            <section class="section playlists-management hidden" id="playlistsSection">
+                <div class="section-header">
+                    <h2>Manage Playlists</h2>
+                    <button class="btn-primary" onclick="showAddPlaylistModal()">
+                        <span>+</span> Add New Playlist
+                    </button>
+                </div>
+
+                <div class="playlists-table-container">
+                    <table class="playlists-table">
+                        <thead>
+                            <tr>
+                                <th>Playlist Name</th>
+                                <th>Language</th>
+                                <th>Videos</th>
+                                <th>Views</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playlistsTableBody">
+                            <tr>
+                                <td>Learn C in 30 Days</td>
+                                <td><span class="lang-badge c">C</span></td>
+                                <td>10</td>
+                                <td>1,250</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <button class="action-btn-small edit" onclick="editPlaylist('c')">Edit</button>
+                                    <button class="action-btn-small delete" onclick="deletePlaylist('c')">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Python Complete Course</td>
+                                <td><span class="lang-badge python">Python</span></td>
+                                <td>10</td>
+                                <td>3,500</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <button class="action-btn-small edit" onclick="editPlaylist('python')">Edit</button>
+                                    <button class="action-btn-small delete" onclick="deletePlaylist('python')">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Java Masterclass</td>
+                                <td><span class="lang-badge java">Java</span></td>
+                                <td>10</td>
+                                <td>2,100</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <button class="action-btn-small edit" onclick="editPlaylist('java')">Edit</button>
+                                    <button class="action-btn-small delete" onclick="deletePlaylist('java')">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>JavaScript Essentials</td>
+                                <td><span class="lang-badge js">JavaScript</span></td>
+                                <td>10</td>
+                                <td>2,800</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <button class="action-btn-small edit" onclick="editPlaylist('js')">Edit</button>
+                                    <button class="action-btn-small delete" onclick="deletePlaylist('js')">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>C++ Complete Guide</td>
+                                <td><span class="lang-badge cpp">C++</span></td>
+                                <td>10</td>
+                                <td>1,800</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <button class="action-btn-small edit" onclick="editPlaylist('cpp')">Edit</button>
+                                    <button class="action-btn-small delete" onclick="deletePlaylist('cpp')">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>HTML & CSS Fundamentals</td>
+                                <td><span class="lang-badge html">HTML/CSS</span></td>
+                                <td>10</td>
+                                <td>1,500</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <button class="action-btn-small edit" onclick="editPlaylist('html')">Edit</button>
+                                    <button class="action-btn-small delete" onclick="deletePlaylist('html')">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section class="section analytics-section hidden" id="analyticsSection">
+                <h2>Analytics</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Weekly Quiz Attempts</h3>
+                        <div class="mini-chart">
+                            <div class="chart-bars">
+                                <div class="chart-bar" style="height: 40%;" title="Mon: 15"></div>
+                                <div class="chart-bar" style="height: 60%;" title="Tue: 23"></div>
+                                <div class="chart-bar" style="height: 80%;" title="Wed: 31"></div>
+                                <div class="chart-bar" style="height: 55%;" title="Thu: 21"></div>
+                                <div class="chart-bar" style="height: 90%;" title="Fri: 35"></div>
+                                <div class="chart-bar" style="height: 70%;" title="Sat: 27"></div>
+                                <div class="chart-bar" style="height: 45%;" title="Sun: 17"></div>
+                            </div>
+                            <div class="chart-labels">
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                                <span>Sun</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Average Quiz Score</h3>
+                        <div class="big-number">72%</div>
+                        <p class="trend positive">+5% from last week</p>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Certificates Issued</h3>
+                        <div class="big-number">89</div>
+                        <p class="trend positive">This month</p>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Video Completions</h3>
+                        <div class="big-number">456</div>
+                        <p class="trend positive">+12% this week</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students Section -->
+            <section class="section students-section hidden" id="studentsSection">
+                <h2>Student Management</h2>
+                <div class="students-table-container">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Email</th>
+                                <th>Quizzes Taken</th>
+                                <th>Avg Score</th>
+                                <th>Courses Accessed</th>
+                                <th>Last Active</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lasya Student</td>
+                                <td>lasya1@gmail.com</td>
+                                <td>5</td>
+                                <td>80%</td>
+                                <td>3</td>
+                                <td>Today</td>
+                            </tr>
+                            <tr>
+                                <td>Rahul Kumar</td>
+                                <td>rahul@example.com</td>
+                                <td>3</td>
+                                <td>65%</td>
+                                <td>2</td>
+                                <td>Yesterday</td>
+                            </tr>
+                            <tr>
+                                <td>Priya Sharma</td>
+                                <td>priya@example.com</td>
+                                <td>8</td>
+                                <td>92%</td>
+                                <td>5</td>
+                                <td>Today</td>
+                            </tr>
+                            <tr>
+                                <td>Amit Patel</td>
+                                <td>amit@example.com</td>
+                                <td>2</td>
+                                <td>70%</td>
+                                <td>1</td>
+                                <td>3 days ago</td>
+                            </tr>
+                            <tr>
+                                <td>Sneha Reddy</td>
+                                <td>sneha@example.com</td>
+                                <td>6</td>
+                                <td>85%</td>
+                                <td>4</td>
+                                <td>Today</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Playlist Modal -->
+    <div class="modal" id="addPlaylistModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeAddPlaylistModal()">&times;</button>
+            <h2>Add New Playlist</h2>
+            <form id="addPlaylistForm" onsubmit="addNewPlaylist(event)">
+                <div class="input-group">
+                    <label for="playlistName">Playlist Name</label>
+                    <input type="text" id="playlistName" placeholder="e.g., Learn Ruby" required>
+                </div>
+                <div class="input-group">
+                    <label for="playlistLang">Programming Language</label>
+                    <select id="playlistLang" required>
+                        <option value="">Select Language</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="go">Go</option>
+                        <option value="swift">Swift</option>
+                        <option value="kotlin">Kotlin</option>
+                        <option value="rust">Rust</option>
+                        <option value="php">PHP</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="videoCount">Number of Videos</label>
+                    <input type="number" id="videoCount" placeholder="10" min="1" max="20" required>
+                </div>
+                <button type="submit" class="btn-primary">Add Playlist</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
