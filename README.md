@@ -1,0 +1,1 @@
+this is web appliction made with the help of AI in this we have developed a learning platform from where you can learn code or upoad code videos from youtube links directly and you will be asked question related to that chapter and you will get score too.
